@@ -1,0 +1,191 @@
+#DashboardSidebar.sidebar-light {
+    --sidebar-bg: var(--mt-light);
+    --sidebar-border-color: rgba(var(--mt-rgb-dark), 0.25);
+    --text-color: var(--mt-body-color);
+}
+
+#DashboardSidebar.sidebar-dark {
+    --sidebar-bg: var(--mt-dark);
+    --sidebar-border-color: rgba(var(--mt-rgb-light), 0.25);
+    --text-color: var(--mt-body-color);
+}
+
+#DashboardSidebar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 300px;
+    height: calc(100vh - 50px);
+    background-color: var(--sidebar-bg);
+    transition: width 0.80s ease-in-out;
+    -webkit-transition: width 0.80s ease-in-out;
+    -moz-transition: width 0.80s ease-in-out;
+    -ms-transition: width 0.80s ease-in-out;
+    -o-transition: width 0.80s ease-in-out;
+}
+
+#DashboardSidebar.close {
+    width: 50px;
+}
+
+#DashboardSidebar + .page {
+    position: fixed;
+    top: 50px;
+    right: 0;
+    width: calc(100vw - 300px);
+    transition: width 0.80s ease-in-out;
+    -webkit-transition: width 0.80s ease-in-out;
+    -moz-transition: width 0.80s ease-in-out;
+    -ms-transition: width 0.80s ease-in-out;
+    -o-transition: width 0.80s ease-in-out;
+}
+
+#DashboardSidebar.close + .page {
+    width: calc(100vw - 50px);
+}
+
+#DashboardSidebar .sidebar-toggle {
+    color: var(--text-color);
+    border: 0;
+    border-bottom: 1px solid var(--sidebar-border-color);
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+}
+
+#DashboardSidebar .btn-account {
+    padding: 0.75rem 0.45rem;
+    color: var(--text-color);
+    border: 0;
+    border-top: 1px solid var(--sidebar-border-color);
+    white-space: nowrap;
+    text-wrap: nowrap;
+    overflow: hidden;
+    flex-shrink: 0;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+}
+
+#DashboardSidebar .btn-account .text {
+    padding: 0.5rem;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    -webkit-transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    -ms-transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+#DashboardSidebar.close .btn-account .text {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    -webkit-transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    -ms-transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+#DashboardSidebar .btn-account svg {
+    padding: 0.5rem;
+    overflow: visible;
+    aspect-ratio: 1/1;
+    vertical-align: middle;
+    border: 1px solid var(--text-color);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.account-container .account-card {
+    position: absolute;
+    top: -0.25rem;
+    left: 50%;
+    width: calc(300px - 1rem);
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%,-100%);
+    -webkit-transform: translate(-50%,-100%);
+    -moz-transform: translate(-50%,-100%);
+    -ms-transform: translate(-50%,-100%);
+    -o-transform: translate(-50%,-100%);
+    transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
+    -webkit-transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
+    -moz-transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
+    -ms-transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
+    -o-transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
+}
+
+#DashboardSidebar.close .account-container .account-card {
+    top: 0;
+    left: 0;
+    transform: translate(0,-100%);
+    -webkit-transform: translate(0,-100%);
+    -moz-transform: translate(0,-100%);
+    -ms-transform: translate(0,-100%);
+    -o-transform: translate(0,-100%);
+}
+
+.account-container {
+    overflow: visible;
+}
+
+.account-container .account-card.show {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
+    -webkit-transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
+    -moz-transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
+    -ms-transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
+    -o-transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
+}
+
+#DashboardSidebar .quiz-list {
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+}
+
+#DashboardSidebar .quiz-list::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+#DashboardSidebar .quiz-list::-webkit-scrollbar-track {
+    background-color: var(--sidebar-border-color);
+}
+
+#DashboardSidebar .quiz-list::-webkit-scrollbar-thumb {
+    background: var(--sidebar-border-color);
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+}
+
+#DashboardSidebar .quiz-list .quiz-list-item {
+    padding-left: 1.125rem;
+    padding-right: 1.125rem;
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    flex-shrink: 0;
+}
+
+#DashboardSidebar.close .quiz-list .quiz-list-item {
+    display: none;
+}
+
+#DashboardSidebar .quiz-list .quiz-list-item .text {
+    margin-left: 0.375rem;    
+}

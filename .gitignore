@@ -1,0 +1,27 @@
+# Dependency directories
+node_modules/
+
+# Built files
+build/
+dist/
+
+# Logs
+logs/
+*.log
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# dotenv environment variable files
+.env
+
+# Editor files
+.idea/
+.vscode/
+
+# OS generated files
+.DS_Store
+Thumbs.db

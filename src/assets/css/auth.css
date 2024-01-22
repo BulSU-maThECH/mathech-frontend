@@ -1,0 +1,125 @@
+.card-container {
+    perspective: 100%;
+}
+
+.card-container.rotate .card {
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+}
+
+.card {
+    border: 0 !important;
+    background-color: transparent !important;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform .85s;
+    -webkit-transition: transform .85s;
+    -moz-transition: transform .85s;
+    -ms-transition: transform .85s;
+    -o-transition: transform .85s;
+}
+
+.login-form, .signup-form {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    box-shadow: 0 1px 3px 2px rgba(0, 0, 0, 0.2);
+}
+
+.login-form {
+    overflow: hidden;
+    z-index: 3;
+    border-radius: 0.375rem;
+    -webkit-border-radius: 0.375rem;
+    -moz-border-radius: 0.375rem;
+    -ms-border-radius: 0.375rem;
+    -o-border-radius: 0.375rem;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    background: linear-gradient(to right top, #c3cfe2, #f5f7fa);
+}
+
+.card>.login-form {
+    height: auto;
+}
+
+.signup-form {
+    overflow: hidden;
+    z-index: 2;
+    transform: rotateY(180deg) translateY(-50%);
+    -webkit-transform: rotateY(180deg) translateY(-50%);
+    -moz-transform: rotateY(180deg) translateY(-50%);
+    -ms-transform: rotateY(180deg) translateY(-50%);
+    -o-transform: rotateY(180deg) translateY(-50%);
+    border-radius: 0.37rem;
+    -webkit-border-radius: 0.37rem;
+    -moz-border-radius: 0.37rem;
+    -ms-border-radius: 0.37rem;
+    -o-border-radius: 0.37rem;
+    background: linear-gradient(to right top, #e2d1c3, #fdfcfb);
+}
+
+.card>.signup-form {
+    height: auto;
+}
+
+.login-form .card-header,
+.signup-form .card-header {
+    margin-top: 0.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to top, #dbdbdb, #fafafa);
+    width: 75%;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -7px rgba(0, 0, 0, 0.2);
+    border-radius: 0.375rem !important;
+    -webkit-border-radius: 0.375rem !important;
+    -moz-border-radius: 0.375rem !important;
+    -ms-border-radius: 0.375rem !important;
+    -o-border-radius: 0.375rem !important;
+}
+
+.form-wrapper .form-control:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.form-control.error,
+.form-pwd:focus.error {
+    outline: 2px solid #dc3545;
+}
+
+.form-pwd.match, .form-pwd:focus.match {
+    border: 1px solid #198754;
+}
+
+.ads-wrapper .carousel {
+    height: 400px;
+    width: 100%;
+    aspect-ratio: 1024/768;
+}
+
+.ads-wrapper .carousel-inner {
+    width: 100%;
+    height: 100%;
+}
+.ads-wrapper .carousel-inner .carousel-item {
+    width: 100%;
+    height: 100%;
+}
+
+.ads-wrapper .carousel img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}

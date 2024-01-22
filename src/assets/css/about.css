@@ -1,0 +1,34 @@
+#mission .figure-img {
+    height: 200px;
+}
+
+#mission .content {
+    text-align: justify;
+}
+
+#team .team-img-container {
+    width: 100%;
+    aspect-ratio: 1/1;
+}
+
+#team .team-img-container .team-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+@media (min-width: 768px) {
+    #team .team-img-container {
+        width: 200px;
+    }
+}
+
+@media (min-width: 992px) {
+    #mission .figure-img {
+        height: 250px;
+    }
+    
+    #team .team-img-container {
+        width: 300px;
+    }
+}
