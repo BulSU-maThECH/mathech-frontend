@@ -8,7 +8,7 @@ export default function AppNavbar({toggleAppTheme, appTheme, unsetUser}) {
     const {user} = useContext(UserContext);
     return (
         <Navbar expand="md" id="AppNavbar" variant={appTheme} className="p-0">
-            <Container fluid className="navbar-container p-0 px-5">
+            <Container fluid className="navbar-container p-0 px-3 px-md-5">
                 <Navbar.Brand as={Link} to="/" className="p-0 me-5 d-flex align-items-center">
                     <Image alt="appnavbar-logo" src={process.env.PUBLIC_URL + `logo_${appTheme}_horizontal.png`} />
                 </Navbar.Brand>
