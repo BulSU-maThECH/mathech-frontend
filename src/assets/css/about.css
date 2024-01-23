@@ -17,6 +17,10 @@
     object-fit: cover;
 }
 
+#team .about-team-member {
+    text-align: justify;
+}
+
 @media (min-width: 768px) {
     #team .team-img-container {
         width: 200px;
