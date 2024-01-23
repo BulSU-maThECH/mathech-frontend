@@ -10,7 +10,7 @@ import AppFooter from './components/AppFooter';
 import DashboardSidebar from './components/DashboardSidebar';
 import PageOffline from './pages/PageOffline';
 import Auth from './pages/Auth';
-import Home from './pages/Home';
+import QuizGenerator from './pages/QuizGenerator';
 import About from './pages/About';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -129,7 +129,8 @@ function DashboardRoutes({appTheme}) {
         <Fragment>
             <DashboardSidebar appTheme={appTheme} />
             <Routes>
-                <Route index element={<Home />} />
+                <Route index element={<QuizGenerator />} />
+                <Route path="/q/:uuid" element={<QuizGenerator />} />
             </Routes>
         </Fragment>
     );
