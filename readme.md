@@ -8,8 +8,11 @@ maThECH is an innovative online quiz generator built on the MERN stack, designed
 
 - [Introduction](#introduction)
 - [Features](#features)
-- [Usage](#usage)
-    - [User Account](#user-account)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Setup](#setup)
+    - [Environment Variables](#environment-variables)
 
 ## Introduction
 
@@ -20,19 +23,20 @@ maThECH Frontend is the client-side component of the maThECH quiz generator webs
 - Account Management (Edit details, Deactivate Account, Activate Account)
 - Quiz Generation (Generate, Edit, Delete, Download)
 
-## Usage
+## Getting Started
 
-### User Account
-- Sign Up
-    - Register an account by filling out the sign up form
-    - Provide the necessary details needed for creating an account
-- Login
-    - Provide your account credentials such as your email or mobile number, and your password
-- Edit Account
-    - Edit your account details through your profile page.
-    - Edit your profile image
-- Account Settings
-    - Edit your account's email, mobile number, and name
-    - Account Security
-        - Change your account password
-        - Check your login logs
+### Prerequisites
+
+- Node.js and npm installed
+- maThECH backend API
+
+### Installation
+
+## Setup
+
+### Environment Variables
+
+Create a `.env` file in the root directory and add the following variables:
+```bash
+REACT_APP_API_URL=your_backend_url or use https://mathech.onrender.com
+```
