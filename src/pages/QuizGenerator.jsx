@@ -1,4 +1,4 @@
-import "../assets/css/home.css";
+import "../assets/css/quizGenerator.css";
 import { Container } from "react-bootstrap";
 
 export default function QuizGenerator() {
