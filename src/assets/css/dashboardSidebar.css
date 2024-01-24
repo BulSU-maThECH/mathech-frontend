@@ -17,11 +17,11 @@
     width: 300px;
     height: calc(100vh - 50px);
     background-color: var(--sidebar-bg);
-    transition: width 0.80s ease-in-out;
-    -webkit-transition: width 0.80s ease-in-out;
-    -moz-transition: width 0.80s ease-in-out;
-    -ms-transition: width 0.80s ease-in-out;
-    -o-transition: width 0.80s ease-in-out;
+    transition: width 0.375s ease-in-out;
+    -webkit-transition: width 0.375s ease-in-out;
+    -moz-transition: width 0.375s ease-in-out;
+    -ms-transition: width 0.375s ease-in-out;
+    -o-transition: width 0.375s ease-in-out;
 }
 
 #DashboardSidebar.close {
@@ -33,11 +33,11 @@
     top: 50px;
     right: 0;
     width: calc(100vw - 300px);
-    transition: width 0.80s ease-in-out;
-    -webkit-transition: width 0.80s ease-in-out;
-    -moz-transition: width 0.80s ease-in-out;
-    -ms-transition: width 0.80s ease-in-out;
-    -o-transition: width 0.80s ease-in-out;
+    transition: width 0.375s ease-in-out;
+    -webkit-transition: width 0.375s ease-in-out;
+    -moz-transition: width 0.375s ease-in-out;
+    -ms-transition: width 0.375s ease-in-out;
+    -o-transition: width 0.375s ease-in-out;
 }
 
 #DashboardSidebar.close + .page {
@@ -53,6 +53,16 @@
     -moz-border-radius: 0;
     -ms-border-radius: 0;
     -o-border-radius: 0;
+}
+
+#DashboardSidebar .new-quiz {
+    overflow: hidden;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+#DashboardSidebar.close .new-quiz {
+    display: none;
 }
 
 #DashboardSidebar .btn-account {
@@ -75,21 +85,21 @@
     padding: 0.5rem;
     visibility: visible;
     opacity: 1;
-    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-    -webkit-transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-    -moz-transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-    -ms-transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-    -o-transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
+    -webkit-transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
+    -moz-transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
+    -ms-transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
+    -o-transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
 }
 
 #DashboardSidebar.close .btn-account .text {
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-    -webkit-transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-    -moz-transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-    -ms-transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-    -o-transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
+    -webkit-transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
+    -moz-transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
+    -ms-transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
+    -o-transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
 }
 
 #DashboardSidebar .btn-account svg {
@@ -117,11 +127,11 @@
     -moz-transform: translate(-50%,-100%);
     -ms-transform: translate(-50%,-100%);
     -o-transform: translate(-50%,-100%);
-    transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
-    -webkit-transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
-    -moz-transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
-    -ms-transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
-    -o-transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
+    transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
+    -webkit-transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
+    -moz-transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
+    -ms-transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
+    -o-transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
 }
 
 #DashboardSidebar.close .account-container .account-card {
@@ -141,11 +151,11 @@
 .account-container .account-card.show {
     opacity: 1;
     visibility: visible;
-    transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
-    -webkit-transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
-    -moz-transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
-    -ms-transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
-    -o-transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
+    transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
+    -webkit-transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
+    -moz-transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
+    -ms-transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
+    -o-transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
 }
 
 #DashboardSidebar .quiz-list {

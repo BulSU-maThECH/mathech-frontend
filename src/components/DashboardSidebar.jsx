@@ -2,6 +2,7 @@ import { useState } from "react";
 import "../assets/css/dashboardSidebar.css";
 import { Button, Container, ListGroup, Stack } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 export default function DashboardSidebar({appTheme}) {
     const [isSidebarClose, setIsSidebarClose] = useState(false);
@@ -11,8 +12,9 @@ export default function DashboardSidebar({appTheme}) {
         <Container fluid id="DashboardSidebar" className={`sidebar-${appTheme} p-0 m-0 ${isSidebarClose ? 'close' : ''}`}>
             <Stack direction="vertical" className="h-100">
                 <Button variant={false} className="sidebar-toggle" onClick={() => setIsSidebarClose(!isSidebarClose)}><FontAwesomeIcon icon="fa-solid fa-bars" /></Button>
+                <Button as={Link} to="/" variant="secondary" className="new-quiz m-2"><FontAwesomeIcon icon="fa-regular fa-square-plus" />&ensp;New Quiz</Button>
 
-                <Stack direction="vertical" gap={2} className="quiz-list p-3">
+                <Stack direction="vertical" gap={2} className="quiz-list p-2">
                     <Button variant="secondary" className="quiz-list-item"><FontAwesomeIcon icon="fa-solid fa-file-lines" /><span className="text">Quiz Item 1</span></Button>
                 </Stack>
                 
