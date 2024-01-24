@@ -103,6 +103,16 @@ export default function Auth() {
                 })
             }
         })
+        .catch(error => {
+            Swal.fire({
+                title: 'Error logging in!',
+                icon: 'error',
+                text: error.message,
+                timer: 3000,
+                timerProgressBar: false,
+                showConfirmButton: false
+            });
+        });
     };
 
     function getUserDetails(token) {
@@ -138,6 +148,16 @@ export default function Auth() {
         .then(res => res.json())
         .then(result => {
             setOneTimePass(result.otp);
+        })
+        .catch(error => {
+            Swal.fire({
+                title: error.message,
+                icon: 'error',
+                text: 'Failed to generate OTP',
+                timer: 3000,
+                timerProgressBar: false,
+                showConfirmButton: false
+            });
         });
     };
 
@@ -180,6 +200,16 @@ export default function Auth() {
                 setSignupPass("");
                 setSignupConfirmPass("");
             }
+        })
+        .catch(error => {
+            Swal.fire({
+                title: error.message,
+                icon: 'error',
+                text: 'Could not verify if account exist',
+                timer: 3000,
+                timerProgressBar: false,
+                showConfirmButton: false
+            });
         });
     };
 
@@ -228,6 +258,16 @@ export default function Auth() {
                 setSignupConfirmPass("");
                 setOneTimePass("");
             }
+        })
+        .catch(error => {
+            Swal.fire({
+                title: error.message,
+                icon: 'error',
+                text: 'Failed to register account',
+                timer: 3000,
+                timerProgressBar: false,
+                showConfirmButton: false
+            });
         });
     };
 
