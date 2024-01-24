@@ -201,7 +201,7 @@ samp {
     color: var(--mt-link-color) !important;
     line-height: 1;
     font-family: var(--mt-font-cursive);
-    font-weight: 900 !important;
+    font-weight: 700 !important;
 }
 
 .nav-link:hover, .nav-link:focus {
