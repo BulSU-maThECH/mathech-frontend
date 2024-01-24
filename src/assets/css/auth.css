@@ -103,6 +103,16 @@
     border: 1px solid #198754;
 }
 
+.ads-wrapper {
+    display: none;
+}
+
+@media (min-width: 992px) {
+    .ads-wrapper {
+        display: flex;
+    }
+}
+
 .ads-wrapper .carousel {
     height: 400px;
     width: 100%;

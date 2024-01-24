@@ -289,7 +289,7 @@ export default function Auth() {
         <Fragment>
             <Container fluid id="page-auth" className="page page-auth">
                 <Row className="page-container justify-content-center align-items-center h-100 m-0">
-                    <Col lg={{ span: 5, order: 1 }} className="ads-wrapper d-none d-lg-flex justify-content-center align-items-center h-100 p-3">
+                    <Col lg={{ span: 5, order: 1 }} className="ads-wrapper justify-content-center align-items-center h-100 p-3">
                         <Carousel fade controls={false} indicators={false}  className="ads">
                             <Carousel.Item>
                                 <Image alt="ads-image-1" src="https://res.cloudinary.com/dbpgyvd0f/image/upload/v1704031988/maThECH/Ads_01_anm8td.jpg" />
