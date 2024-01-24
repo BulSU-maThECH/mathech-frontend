@@ -18,7 +18,7 @@ export default function AppNavbar({toggleAppTheme, appTheme, unsetUser}) {
                 <Navbar.Collapse id="header-nav">
                     <Stack direction="horizontal" className="w-100">
                         <Nav className="me-auto">
-                            <Nav.Link as={NavLink} to="/">Home</Nav.Link>
+                            <Nav.Link as={NavLink} to="/">{user !== null ? 'Quiz Generator' : 'Home'}</Nav.Link>
                             <Nav.Link as={NavLink} to="/about">About</Nav.Link>
                         </Nav>
                         <Nav className="flex-row align-items-center gap-3">
