@@ -6,7 +6,7 @@ import { Link as ScrollLink } from "react-scroll";
 const TeamMember = memo(({imgSrc, imgPos, name, role, description}) => {
     return (
         <Col xs={12} className="p-0">
-            <Figure className={`team-img-container m-0 mb-3 mb-md-0 me-md-3 float-${imgPos}`}>
+            <Figure className={`team-img-container m-0 mb-3 mb-md-0 ${imgPos === 'start' ? 'me' : 'ms'}-md-3 float-${imgPos}`}>
                 <Figure.Image fluid rounded className="team-img m-0" src={imgSrc} loading="lazy" />
             </Figure>
             <h3 className="title-2 m-0 mb-1">{name}</h3>
