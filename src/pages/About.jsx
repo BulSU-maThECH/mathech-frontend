@@ -31,7 +31,7 @@ export default function About() {
                         <h4 className="title-1 text-center mb-3">Mission</h4>
                         <div className="content">
                             <Figure className="m-0 me-3 float-start">
-                                <Figure.Image fluid className="m-0" src="https://iili.io/J7rqzuf.gif" loading="lazy" />
+                                <Figure.Image fluid className="m-0" src="https://res.cloudinary.com/dbpgyvd0f/image/upload/v1706687884/maThECH/rocket-joypixels_b26ebw.gif" loading="lazy" />
                             </Figure>
                             <p>
                                 At maThECH, our mission is to revolutionize the educational landscape by providing educators with a transformative platform that liberates them from the time-consuming task of quiz creation. We are committed to empowering educators at the senior high school and college levels, offering a versatile web-based tool that seamlessly integrates AI-generated text in quiz creation, allowing for efficient, customized, and curriculum-aligned assessments in mathematics and computer studies.
