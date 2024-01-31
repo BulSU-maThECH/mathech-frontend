@@ -48,7 +48,7 @@ export default function About() {
                         
                         <Row className="p-0 m-0 gap-5">
                             <TeamMember
-                                imgSrc="https://res.cloudinary.com/dbpgyvd0f/image/upload/v1705979611/maThECH/lourd_profile_c43opn.jpg"
+                                imgSrc="https://res.cloudinary.com/dbpgyvd0f/image/upload/v1706687214/maThECH/lourd_profile_zzhgin.jpg"
                                 imgPos="start"
                                 name="Lourd Nathaniel S. Gonzalez"
                                 role="Team Leader, Lead Full-stack Developer"
@@ -56,7 +56,7 @@ export default function About() {
                             />
 
                             <TeamMember
-                                imgSrc="https://res.cloudinary.com/dbpgyvd0f/image/upload/v1705979486/maThECH/james_profile_hmjxyw.jpg"
+                                imgSrc="https://res.cloudinary.com/dbpgyvd0f/image/upload/v1706687217/maThECH/james_profile_vogc3n.jpg"
                                 imgPos="end"
                                 name="James Carl C. Delos Santos"
                                 role="Front-end developer, Graphic Designer, Documentation Specialist"
@@ -64,7 +64,7 @@ export default function About() {
                             />
 
                             <TeamMember
-                                imgSrc="https://res.cloudinary.com/dbpgyvd0f/image/upload/v1706056785/maThECH/charles_profile_cqr0gu.jpg"
+                                imgSrc="https://res.cloudinary.com/dbpgyvd0f/image/upload/v1706687218/maThECH/charles_profile_sb3oqm.jpg"
                                 imgPos="start"
                                 name="Charles Lorette Q. Perez"
                                 role="Front-end Developer, Documentation Specialist"
@@ -72,7 +72,7 @@ export default function About() {
                             />
 
                             <TeamMember
-                                imgSrc="https://res.cloudinary.com/dbpgyvd0f/image/upload/v1706058349/maThECH/luis_profile_ndhzvo.jpg"
+                                imgSrc="https://res.cloudinary.com/dbpgyvd0f/image/upload/v1706687217/maThECH/luis_profile_ho0oak.jpg"
                                 imgPos="end"
                                 name="Luis James M. Garcia"
                                 role="Back-end Developer, Documentation Specialist"
