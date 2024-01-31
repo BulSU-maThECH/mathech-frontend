@@ -21,10 +21,18 @@
 		"nodejs"
 	],
 	"authors": [
-		{"name": "Charles Lorette Q. Perez"},
-		{"name": "James Carl C. Delos Santos"},
-		{"name": "Lourd Nathaniel S. Gonzalez"},
-		{"name": "Luis James M. Garcia"}
+		{
+			"name": "Charles Lorette Q. Perez"
+		},
+		{
+			"name": "James Carl C. Delos Santos"
+		},
+		{
+			"name": "Lourd Nathaniel S. Gonzalez"
+		},
+		{
+			"name": "Luis James M. Garcia"
+		}
 	],
 	"license": "ISC",
 	"bugs": {
