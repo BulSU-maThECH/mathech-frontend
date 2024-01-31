@@ -111,7 +111,7 @@ export default function App() {
                     <AppNavbar toggleAppTheme={toggleAppTheme} appTheme={appTheme} unsetUser={unsetUser} />
                         <Routes>
                             <Route path="/*" element={user ? <DashboardRoutes appTheme={appTheme} /> : <Navigate to="/auth" />} />
-                            <Route path="/auth" element={user ? <Navigate to="/" /> : <Auth />} />
+                            <Route path="/auth" element={user ? <Navigate to="/" /> : <Auth appTheme={appTheme} />} />
                             <Route path="/about" element={<About appTheme={appTheme} />} />
                         </Routes>
                 </UserProvider>
