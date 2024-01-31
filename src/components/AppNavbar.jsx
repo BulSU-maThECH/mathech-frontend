@@ -18,14 +18,15 @@ export default function AppNavbar({toggleAppTheme, appTheme, unsetUser}) {
                 <Navbar.Collapse id="header-nav">
                     <Stack direction="horizontal" className="w-100">
                         <Nav className="me-auto">
-                            <Nav.Link as={NavLink} to="/">{user !== null ? 'Quiz Generator' : 'Home'}</Nav.Link>
+                            <Nav.Link as={NavLink} to="/">{user ? 'Quiz Generator' : 'Home'}</Nav.Link>
                             <Nav.Link as={NavLink} to="/about">About</Nav.Link>
                         </Nav>
                         <Nav className="flex-row align-items-center gap-3">
-                            {user !== null
-                            ? <Button variant="danger" onClick={unsetUser} className="fs-6 py-1">Logout&ensp;<FontAwesomeIcon icon="fa-solid fa-right-to-bracket" /></Button>
-                            : <></>
-                            }
+                            {user && (
+                                <Button variant="danger" onClick={unsetUser} className="fs-6 py-1">
+                                Logout&ensp;<FontAwesomeIcon icon="fa-solid fa-right-to-bracket" />
+                                </Button>
+                            )}
                             <FormCheck type="switch" id="btnToggleTheme" onClick={toggleAppTheme} />
                         </Nav>
                     </Stack>
