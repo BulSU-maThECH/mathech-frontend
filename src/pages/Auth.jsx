@@ -1,12 +1,12 @@
 import { Fragment, useContext, useEffect, useState } from 'react';
 import '../assets/css/auth.css';
-import { Button, Card, Carousel, Col, Container, FloatingLabel, Form, Image, InputGroup, Modal, Row, Stack } from "react-bootstrap";
+import { Button, Card, Carousel, Col, Container, FloatingLabel, Form, Image, InputGroup, Modal, Row, Spinner, Stack } from "react-bootstrap";
 import Swal from 'sweetalert2';
 import UserContext from '../UserContext';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
-export default function Auth() {
+export default function Auth({appTheme}) {
     const { setUser } = useContext(UserContext);
     const navigate = useNavigate();
     const [isRotated, setIsRotated] = useState(false);
@@ -24,6 +24,7 @@ export default function Auth() {
     const [confirmOtp, setConfirmOtp] = useState('');
     const [isOtpConfirmed, setIsOtpConfirmed] = useState();
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const [isSendingOtp, setIsSendingOtp] = useState(false);
 
     function rotateCard() {
         setIsRotated(!isRotated);
@@ -41,6 +42,16 @@ export default function Auth() {
 
     function login(e) {
         e.preventDefault();
+
+        const loadingSwal = Swal.fire({
+            title: 'Logging in...',
+            showConfirmButton: false,
+            allowOutsideClick: false,
+            willOpen: () => {
+                Swal.showLoading();
+            }
+        });
+
         fetch(`${process.env.REACT_APP_API_URL}/user/login`, {
             method: 'POST',
             headers: {
@@ -54,6 +65,8 @@ export default function Auth() {
         })
         .then(res => res.json())
         .then(result => {
+            loadingSwal.close();
+
             if (!result.success) {
                 Swal.fire({
                     title: result.message,
@@ -104,6 +117,8 @@ export default function Auth() {
             }
         })
         .catch(error => {
+            loadingSwal.close();
+
             Swal.fire({
                 title: 'Error logging in!',
                 icon: 'error',
@@ -136,6 +151,7 @@ export default function Auth() {
     };
 
     function generateOTP() {
+        setIsSendingOtp(true);
         fetch(`${process.env.REACT_APP_API_URL}/otp/send`, {
             method: 'POST',
             headers: {
@@ -147,9 +163,11 @@ export default function Auth() {
         })
         .then(res => res.json())
         .then(result => {
+            setIsSendingOtp(false);
             setOneTimePass(result.otp);
         })
         .catch(error => {
+            setIsSendingOtp(false);
             Swal.fire({
                 title: error.message,
                 icon: 'error',
@@ -214,6 +232,15 @@ export default function Auth() {
     };
 
     function register() {
+        const loadingSwal = Swal.fire({
+            title: 'Signing up...',
+            showConfirmButton: false,
+            allowOutsideClick: false,
+            willOpen: () => {
+                Swal.showLoading();
+            }
+        });
+
         fetch(`${process.env.REACT_APP_API_URL}/user/signup`, {
             method: 'POST',
             headers: {
@@ -230,6 +257,8 @@ export default function Auth() {
         })
         .then(res => res.json())
         .then(result => {
+            loadingSwal.close();
+
             if (result.success === false) {
                 Swal.fire({
                     title: result.message,
@@ -260,6 +289,8 @@ export default function Auth() {
             }
         })
         .catch(error => {
+            loadingSwal.close();
+            
             Swal.fire({
                 title: error.message,
                 icon: 'error',
@@ -386,7 +417,7 @@ export default function Auth() {
                 </Row>
             </Container>
             
-            <Modal show={isModalVisible} onHide={() => setIsModalVisible(false)} centered>
+            <Modal show={isModalVisible} onHide={() => setIsModalVisible(false)} centered className="modal-otp">
                 <Modal.Header>
                     <Modal.Title className="title-1">Verify Email</Modal.Title>
                 </Modal.Header>
@@ -408,7 +439,7 @@ export default function Auth() {
                         
 
                         {oneTimePass === ''
-                        ? <Button type="button" variant="primary" onClick={generateOTP} className="w-50">Send OTP</Button>
+                        ? <Button type="button" variant="primary" onClick={generateOTP} className="w-50">Send OTP {isSendingOtp ? (<Spinner animation="border" variant={appTheme} size="sm" />) : ''}</Button>
                         : <Button type="button" variant="primary" onClick={verifyOTP} className="w-50">Verify OTP</Button>
                         }
                     </Stack>
