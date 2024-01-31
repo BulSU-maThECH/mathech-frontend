@@ -135,8 +135,12 @@
 }
 
 #DashboardSidebar.close .account-container .account-card {
-    top: 0;
-    left: 0;
+    border: 1px solid var(--sidebar-border-color);
+}
+
+#DashboardSidebar.close .account-container .account-card {
+    top: 50%;
+    left: calc(100% + 0.25rem);
     transform: translate(0,-100%);
     -webkit-transform: translate(0,-100%);
     -moz-transform: translate(0,-100%);
