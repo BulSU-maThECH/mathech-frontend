@@ -1,0 +1,4 @@
+camaelCaseType - .css | useHooks.js
+snake_case_type
+kebab-case-type
+PascalCaseType - .jsx | .js 
