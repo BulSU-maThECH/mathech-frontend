@@ -164,10 +164,21 @@ samp {
     min-height: 50px;
 }
 
+#header-nav {
+    z-index: 5;
+}
+
 .navbar-light {
     background-color: var(--mt-light);
 }
 .navbar-dark {
+    background-color: var(--mt-dark);
+}
+
+.navbar-light #header-nav {
+    background-color: var(--mt-light);
+}
+.navbar-dark #header-nav {
     background-color: var(--mt-dark);
 }
 
