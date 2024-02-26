@@ -1,0 +1,10 @@
+#instruction {
+    background-color: #dddddd;
+    border-bottom: 2px solid #bbbbbb;
+    resize: none;
+}
+
+#subjectList {
+    display: grid;
+    grid: 1fr 1fr 1fr 1fr !important;
+}
