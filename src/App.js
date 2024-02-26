@@ -129,7 +129,7 @@ function DashboardRoutes({appTheme}) {
         <Fragment>
             <DashboardSidebar appTheme={appTheme} />
             <Routes>
-                <Route index element={<QuizGenerator />} />
+                <Route index element={<QuizGenerator appTheme={appTheme} />} />
                 <Route path="/q/:uuid" element={<QuizGenerator />} />
             </Routes>
         </Fragment>

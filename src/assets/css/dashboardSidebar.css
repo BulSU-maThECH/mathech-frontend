@@ -10,11 +10,14 @@
     --text-color: var(--mt-body-color);
 }
 
+.dashboard-container {
+    z-index: 100;
+}
+
 #DashboardSidebar {
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 300px;
     height: calc(100vh - 50px);
     background-color: var(--sidebar-bg);
     transition: width 0.375s ease-in-out;
@@ -24,24 +27,15 @@
     -o-transition: width 0.375s ease-in-out;
 }
 
-#DashboardSidebar.close {
-    width: 50px;
-}
-
-#DashboardSidebar + .page {
+.page {
     position: fixed;
     top: 50px;
     right: 0;
-    width: calc(100vw - 300px);
     transition: width 0.375s ease-in-out;
     -webkit-transition: width 0.375s ease-in-out;
     -moz-transition: width 0.375s ease-in-out;
     -ms-transition: width 0.375s ease-in-out;
     -o-transition: width 0.375s ease-in-out;
-}
-
-#DashboardSidebar.close + .page {
-    width: calc(100vw - 50px);
 }
 
 #DashboardSidebar .sidebar-toggle {

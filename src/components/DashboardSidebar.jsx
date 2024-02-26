@@ -14,6 +14,24 @@ export default function DashboardSidebar({appTheme}) {
     const [isModalSettingsVisible, setIsModalSettingsVisible] = useState(false);
     const [isModalSecurityVisible, setIsModalSecurityVisible] = useState(false);
 
+    const toggleSidebar = () => {
+        const page = document.querySelector('.page');
+        const dashboardSidebar = document.getElementById('DashboardSidebar');
+        const windowWidth = window.innerWidth;
+        console.log(windowWidth);
+
+        if (isSidebarClose) {
+            setIsSidebarClose(false);
+            dashboardSidebar.style.setProperty('width', '300px');
+            page.style.setProperty('width', `${windowWidth - 300}px`);
+        }
+        else {
+            setIsSidebarClose(true);
+            dashboardSidebar.style.setProperty('width', '50px');
+            page.style.setProperty('width', `${windowWidth - 50}px`);
+        }
+    }
+
     const handleProfileModal = () => {
         setIsModalProfileVisible(!isModalProfileVisible);
         setIsAccountVisible(false);
@@ -30,10 +48,10 @@ export default function DashboardSidebar({appTheme}) {
     }
 
     return (
-        <Container fluid className="p-0 m-0 position-relative">
-            <Container fluid id="DashboardSidebar" className={`sidebar-${appTheme} p-0 m-0 ${isSidebarClose ? 'close' : ''}`}>
+        <Container fluid className="p-0 m-0 position-relative dashboard-container">
+            <Container fluid id="DashboardSidebar" className={`sidebar-${appTheme} p-0 m-0 ${isSidebarClose ? 'close' : ''}`} style={{ 'width': '300px'}}>
                 <Stack direction="vertical" className="h-100">
-                    <Button variant={false} className="sidebar-toggle" onClick={() => setIsSidebarClose(!isSidebarClose)}><FontAwesomeIcon icon="fa-solid fa-bars" /></Button>
+                    <Button variant={false} className="sidebar-toggle" onClick={toggleSidebar}><FontAwesomeIcon icon="fa-solid fa-bars" /></Button>
                     <Button as={Link} to="/" variant="secondary" className="new-quiz m-2"><FontAwesomeIcon icon="fa-regular fa-square-plus" />&ensp;New Quiz</Button>
 
                     <Stack direction="vertical" gap={2} className="quiz-list p-2">
