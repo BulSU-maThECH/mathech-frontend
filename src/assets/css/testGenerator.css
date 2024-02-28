@@ -6,5 +6,15 @@
 
 #subjectList {
     display: grid;
-    grid: 1fr 1fr 1fr 1fr !important;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 1.25rem;
+    justify-content: space-between;
+}
+
+.btn-generateQestions {
+    text-wrap: nowrap;
+}
+
+.card-footer .input-group .form-control {
+    max-width: 80px;
 }
