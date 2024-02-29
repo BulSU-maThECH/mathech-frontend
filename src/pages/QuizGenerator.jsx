@@ -11,7 +11,7 @@ import ProblemSolving from "../components/questionTypes/ProblemSolving";
 export default function QuizGenerator({appTheme}) {
     
     return (
-        <Container fluid id="page-home" className="page page-home px-3" style={{ 'width': `${window.innerWidth - 300}px`}}>
+        <Container fluid id="page-home" className="page page-quizGenerator px-3" style={{ 'width': `${window.innerWidth - 300}px`}}>
             <TestGenerator appTheme={appTheme} />
             <Enumeration appTheme={appTheme} />
             <Essay appTheme={appTheme} />
