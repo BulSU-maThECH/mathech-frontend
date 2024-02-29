@@ -27,7 +27,7 @@
     -o-transition: width 0.375s ease-in-out;
 }
 
-.page {
+.page-quizGenerator {
     position: fixed;
     top: 50px;
     right: 0;
