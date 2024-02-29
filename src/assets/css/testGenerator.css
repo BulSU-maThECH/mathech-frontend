@@ -18,3 +18,12 @@
 .card-footer .input-group .form-control {
     max-width: 80px;
 }
+
+.dropdown-selector {
+    min-width: 200px;
+    text-align: left !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.375rem;
+}
