@@ -21,10 +21,18 @@
 		"nodejs"
 	],
 	"authors": [
-		{"name": "Charles Lorette Q. Perez"},
-		{"name": "James Carl C. Delos Santos"},
-		{"name": "Lourd Nathaniel S. Gonzalez"},
-		{"name": "Luis James M. Garcia"}
+		{
+			"name": "Charles Lorette Q. Perez"
+		},
+		{
+			"name": "James Carl C. Delos Santos"
+		},
+		{
+			"name": "Lourd Nathaniel S. Gonzalez"
+		},
+		{
+			"name": "Luis James M. Garcia"
+		}
 	],
 	"license": "ISC",
 	"bugs": {
@@ -36,10 +44,12 @@
 		"@fortawesome/free-regular-svg-icons": "^6.5.1",
 		"@fortawesome/free-solid-svg-icons": "^6.5.1",
 		"@fortawesome/react-fontawesome": "^0.2.0",
+		"@lordicon/react": "^1.4.1",
 		"aos": "^2.3.4",
 		"bootstrap": "^5.3.2",
 		"js-cookie": "^3.0.5",
 		"katex": "^0.16.9",
+		"lottie-web": "^5.12.2",
 		"react": "^18.2.0",
 		"react-bootstrap": "^2.9.2",
 		"react-dom": "^18.2.0",
@@ -50,7 +60,7 @@
 		"sweetalert2": "^11.10.2",
 		"web-vitals": "^3.5.0"
 	},
-    "homepage": "https://mathech.vercel.app/",
+	"homepage": "https://mathech.vercel.app/",
 	"eslintConfig": {
 		"env": {
 			"browser": true,

@@ -1,14 +1,14 @@
 #instruction {
-    background-color: #dddddd;
     border-bottom: 2px solid #bbbbbb;
     resize: none;
 }
 
-#subjectList {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    column-gap: 1.25rem;
-    justify-content: space-between;
+#instruction.bg-light {
+    background-color: #dddddd !important;
+}
+
+#instruction.bg-dark {
+    background-color: #36393d !important;
 }
 
 .btn-generateQestions {

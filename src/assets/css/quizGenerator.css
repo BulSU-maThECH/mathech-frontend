@@ -1,0 +1,27 @@
+.card-test {
+    box-shadow: 0 0 5px #222222;
+}
+
+.checkbox-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 1.25rem;
+    justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+    .checkbox-list {
+        grid-template-columns:  1fr 1fr;
+    }
+}
+
+@media (min-width: 992px) {
+    .checkbox-list {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+.btn-option div {
+    height: 1.375rem !important;
+    width: 1.375rem !important;
+}

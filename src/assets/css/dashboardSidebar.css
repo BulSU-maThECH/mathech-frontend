@@ -31,6 +31,7 @@
     position: fixed;
     top: 50px;
     right: 0;
+    overflow-y: auto;
     transition: width 0.375s ease-in-out;
     -webkit-transition: width 0.375s ease-in-out;
     -moz-transition: width 0.375s ease-in-out;
