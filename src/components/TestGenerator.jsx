@@ -1,24 +1,28 @@
+import { useState } from "react";
 import "../assets/css/testGenerator.css";
 import { Button, Card, Container, Dropdown, Form, InputGroup, Stack } from "react-bootstrap";
 
 export default function TestGenerator({appTheme}) {
-    
+    const [selectedTestType, setSelectedTestType] = useState("");
+    const [selectedSubject, setSelectedSubject] = useState("");
+    const [selectedChapter, setSelectedChapter] = useState("");
+
     return (
         <Card id="test-generator" bg={appTheme} text={appTheme === 'light' ? 'dark' : 'white'} className="mt-3" style={{'box-shadow': '0 0 5px #222222'}}>
             <Card.Header className="d-flex align-items-center justify-content-between">
                 <Card.Title className="title-1 fw-bold">Test I</Card.Title>
                 <Dropdown>
-                    <Dropdown.Toggle variant="secondary" id="testType">
-                        Select test type...
+                    <Dropdown.Toggle variant="secondary" id="testType" className="dropdown-selector">
+                        {selectedTestType === '' ? 'Select test type...' : selectedTestType}
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                        <Dropdown.Item>Enumeration</Dropdown.Item>
-                        <Dropdown.Item>Essay</Dropdown.Item>
-                        <Dropdown.Item>Multiple Answer</Dropdown.Item>
-                        <Dropdown.Item>Multiple Choice</Dropdown.Item>
-                        <Dropdown.Item>Short Answer</Dropdown.Item>
-                        <Dropdown.Item>Problem Solving</Dropdown.Item>
+                        <Dropdown.Item onClick={() => setSelectedTestType("Enumeration")}>Enumeration</Dropdown.Item>
+                        <Dropdown.Item onClick={() => setSelectedTestType("Essay")}>Essay</Dropdown.Item>
+                        <Dropdown.Item onClick={() => setSelectedTestType("Multiple Answer")}>Multiple Answer</Dropdown.Item>
+                        <Dropdown.Item onClick={() => setSelectedTestType("Multiple Choice")}>Multiple Choice</Dropdown.Item>
+                        <Dropdown.Item onClick={() => setSelectedTestType("Short Answer")}>Short Answer</Dropdown.Item>
+                        <Dropdown.Item onClick={() => setSelectedTestType("Problem Solving")}>Problem Solving</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
             </Card.Header>
@@ -28,24 +32,24 @@ export default function TestGenerator({appTheme}) {
 
                 <Stack direction="horizontal" gap={3} className="mb-3">
                     <Dropdown>
-                        <Dropdown.Toggle variant="secondary" id="testType">
-                            Select subject
+                        <Dropdown.Toggle variant="secondary" id="testType" className="dropdown-selector">
+                            {selectedSubject === '' ? 'Select test type...' : selectedSubject}
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                            <Dropdown.Item>Mathematics in the Modern World</Dropdown.Item>
+                            <Dropdown.Item onClick={() => setSelectedSubject("Mathematics in the Modern World")}>Mathematics in the Modern World</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                     <Dropdown>
-                        <Dropdown.Toggle variant="secondary" id="testType">
-                            Select Chapter
+                        <Dropdown.Toggle variant="secondary" id="testType" className="dropdown-selector">
+                            {selectedChapter === '' ? 'Select test type...' : selectedChapter}
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                            <Dropdown.Item>Chapter I</Dropdown.Item>
-                            <Dropdown.Item>Chapter II</Dropdown.Item>
-                            <Dropdown.Item>Chapter III</Dropdown.Item>
-                            <Dropdown.Item>Chapter IV</Dropdown.Item>
+                            <Dropdown.Item onClick={() => setSelectedChapter("Chapter I")}>Chapter I</Dropdown.Item>
+                            <Dropdown.Item onClick={() => setSelectedChapter("Chapter II")}>Chapter II</Dropdown.Item>
+                            <Dropdown.Item onClick={() => setSelectedChapter("Chapter III")}>Chapter III</Dropdown.Item>
+                            <Dropdown.Item onClick={() => setSelectedChapter("Chapter IV")}>Chapter IV</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                 </Stack>
