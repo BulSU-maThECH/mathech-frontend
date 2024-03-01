@@ -24,11 +24,11 @@ export default function ProblemSolving({appTheme}) {
                 <Card.Title className="title-1 fw-bold m-0">Problem Solving</Card.Title>
                 
                 <Stack direction="horizontal" gap={2}>
-                    <Button variant="danger" onMouseEnter={playDelete} className="btn-option">
+                    <Button variant="danger" onMouseEnter={playDelete}>
                         <Player ref={deleteRef} icon={IconTrash} state={'hover-empty'} />
                     </Button>
 
-                    <Button variant="primary" onMouseEnter={playEdit} className="btn-option">
+                    <Button variant="primary" onMouseEnter={playEdit}>
                         <Player ref={editRef} icon={IconEdit} state={'hover-line'} />
                     </Button>
                 </Stack>
