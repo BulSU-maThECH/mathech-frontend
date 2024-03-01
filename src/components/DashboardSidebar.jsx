@@ -10,6 +10,7 @@ import { Player } from "@lordicon/react";
 const IconPlus = require("../assets/images/wired-flat-49-plus-circle.json");
 const IconDoc = require("../assets/images/wired-flat-245-edit-document.json");
 const IconAccount = require("../assets/images/wired-flat-21-avatar.json");
+const IconResize = require("../assets/images/system-solid-15-ratio.json");
 
 const AnimatedButton = ({buttonKey}) => {
     const [isHovered, setIsHovered] = useState(false);
@@ -40,6 +41,7 @@ export default function DashboardSidebar({appTheme}) {
     const [isModalSecurityVisible, setIsModalSecurityVisible] = useState(false);
     const addRef = useRef(null);
     const accountRef = useRef(null);
+    const toggleResizeRef = useRef(null);
 
     const playAdd = () => {
         addRef.current?.playFromBeginning();
@@ -47,6 +49,10 @@ export default function DashboardSidebar({appTheme}) {
 
     const playAvatar = () => {
         accountRef.current?.playFromBeginning();
+    }
+
+    const playResize = () => {
+        toggleResizeRef.current?.playFromBeginning();
     }
 
     const toggleSidebar = () => {
@@ -86,7 +92,9 @@ export default function DashboardSidebar({appTheme}) {
         <Container fluid className="p-0 m-0 position-relative dashboard-container">
             <Container fluid id="DashboardSidebar" className={`sidebar-${appTheme} p-0 m-0 ${isSidebarClose ? 'close' : ''}`} style={{ 'width': '300px'}}>
                 <Stack direction="vertical" className="h-100">
-                    <Button variant={false} className="sidebar-toggle" onClick={toggleSidebar}><FontAwesomeIcon icon="fa-solid fa-bars" /></Button>
+                    <Button variant={false} className="sidebar-toggle d-flex justify-content-center" onClick={toggleSidebar} onMouseEnter={playResize} >
+                        <Player ref={toggleResizeRef} icon={IconResize} state={'hover-ratio'} />
+                    </Button>
                     <Button as={Link} to="/" variant="secondary" className="new-quiz m-2 align-items-center justify-content-center gap-1" onMouseEnter={playAdd}>
                         <Player ref={addRef} icon={IconPlus} state={'hover-rotation'} />
                         New Quiz
