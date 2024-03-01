@@ -1,16 +1,11 @@
 import "../assets/css/quizGenerator.css";
 import { Container } from "react-bootstrap";
 import TestGenerator from "../components/TestGenerator";
-import Enumeration from "../components/questionTypes/Enumeration";
-import Essay from "../components/questionTypes/Essay";
-import MultipleAnswer from "../components/questionTypes/MultipleAnswer";
-import MultipleChoice from "../components/questionTypes/MultipleChoice";
-import ShortAnswer from "../components/questionTypes/ShortAnswer";
-import ProblemSolving from "../components/questionTypes/ProblemSolving";
 
 export default function QuizGenerator({appTheme}) {
     
     return (
+<<<<<<< HEAD
         <Container fluid id="page-home" className="page page-home px-3" style={{ 'width': `${window.innerWidth - 300}px`}}>
             {/* <TestGenerator appTheme={appTheme} /> */}
             {/* <Enumeration appTheme={appTheme} /> */}
@@ -19,6 +14,10 @@ export default function QuizGenerator({appTheme}) {
             {/* <MultipleChoice appTheme={appTheme} /> */}
             {/* <ShortAnswer appTheme={appTheme} /> */}
             {/* <ProblemSolving appTheme={appTheme} /> */}
+=======
+        <Container fluid id="page-quizGenerator" className="page page-quizGenerator px-3" style={{ 'width': `${window.innerWidth - 300}px`}}>
+            <TestGenerator appTheme={appTheme} />
+>>>>>>> 3d32f55636aa6d97d2a8c738b840f9b0e2b66906
         </Container>
     );
 };

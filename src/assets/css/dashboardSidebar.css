@@ -27,10 +27,11 @@
     -o-transition: width 0.375s ease-in-out;
 }
 
-.page {
+.page-quizGenerator {
     position: fixed;
     top: 50px;
     right: 0;
+    overflow-y: auto;
     transition: width 0.375s ease-in-out;
     -webkit-transition: width 0.375s ease-in-out;
     -moz-transition: width 0.375s ease-in-out;
@@ -50,6 +51,7 @@
 }
 
 #DashboardSidebar .new-quiz {
+    display: flex;
     overflow: hidden;
     white-space: nowrap;
     flex-shrink: 0;
@@ -75,25 +77,8 @@
     -o-border-radius: 0;
 }
 
-#DashboardSidebar .btn-account .text {
-    padding: 0.5rem;
-    visibility: visible;
-    opacity: 1;
-    transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
-    -webkit-transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
-    -moz-transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
-    -ms-transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
-    -o-transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
-}
-
 #DashboardSidebar.close .btn-account .text {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
-    -webkit-transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
-    -moz-transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
-    -ms-transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
-    -o-transition: opacity 0.375s ease-in-out, visibility 0.375s ease-in-out;
+    display: none;
 }
 
 #DashboardSidebar .btn-account svg {
@@ -184,6 +169,7 @@
     padding-left: 1.125rem;
     padding-right: 1.125rem;
     text-align: left;
+    display: flex;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
