@@ -58,75 +58,43 @@ export default function Auth({appTheme}) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                username: userId,
+                email: userId,
                 password: loginPass
             }),
             credentials: 'include'
         })
-        .then(res => res.json())
-        .then(result => {
+        .then(async (res) => {
             loadingSwal.close();
+            if (!res.ok) {
+                const errorResponse = await res.json();
+                const errorMessage = errorResponse.message;
 
-            if (!result.success) {
                 Swal.fire({
-                    title: result.message,
+                    title: errorMessage,
                     icon: 'error',
                     showConfirmButton: false,
-                    timer: 2000,
+                    timer: 3000,
                     timerProgressBar: false
                 });
-
-                if (result.errorType.toLowerCase() === 'login') {
-                    document.getElementById('userId').classList.add('error');
-                    document.getElementById('login-password').classList.add('error');
-                }
-                else if (result.errorType.toLowerCase() === 'account') {
-                    document.getElementById('userId').classList.add('error');
-                }
-                
-                else if (result.errorType.toLowerCase() === 'password') {
-                    document.getElementById('login-password').classList.add('error');
-                }
-                else {
-                    document.getElementById('userId').classList.remove('error');
-                    document.getElementById('login-password').classList.remove('error');
-                }
-
-                setLoginPass('');
             }
             else {
-                document.getElementById('userId').classList.remove('error');
-                document.getElementById('login-password').classList.remove('error');
-                setUserId('');
-                setLoginPass('');
-
-                getUserDetails(result.token);
+                const response = await res.json();
+                const token = response.access;
+                getUserDetails(token);
 
                 Swal.fire({
-                    title: result.message,
+                    title: 'Login successful!',
                     icon: 'success',
                     showConfirmButton: false,
-                    timer: 2000,
+                    timer: 1000,
                     timerProgressBar: false
                 })
                 .then(result => {
                     if (result.dismiss === Swal.DismissReason.timer) {
                         navigate('/');
                     }
-                })
+                });
             }
-        })
-        .catch(error => {
-            loadingSwal.close();
-
-            Swal.fire({
-                title: 'Error logging in!',
-                icon: 'error',
-                text: error.message,
-                timer: 3000,
-                timerProgressBar: false,
-                showConfirmButton: false
-            });
         });
     };
 
@@ -138,10 +106,22 @@ export default function Auth({appTheme}) {
                 'Authorization': `Bearer ${token}`
             }
         })
-        .then(res => res.json())
-        .then(result => {
+        .then(async (res) => {
+            if (!res.ok) {
+                const responseJson = res.json();
+                const responseError = responseJson.message;
+
+                Swal.fire({
+                    title: responseError,
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: false
+                });
+            }
+            const responseJson = await res.json();
             setUser({
-                id: result._id
+                id: responseJson._id
             });
 
             sessionStorage.setItem('token', token);
@@ -161,21 +141,25 @@ export default function Auth({appTheme}) {
                 userMail: signupEmail
             })
         })
-        .then(res => res.json())
-        .then(result => {
+        .then(async (res) => {
+            if (!res.ok) {
+                const responseJson = await res.json();
+                const responseError = responseJson.message;
+                
+                setIsSendingOtp(false);
+                Swal.fire({
+                    title: responseError,
+                    icon: 'error',
+                    text: 'Failed to generate OTP',
+                    timer: 3000,
+                    timerProgressBar: false,
+                    showConfirmButton: false
+                });
+            }
+
+            const responseJson = await res.json();
             setIsSendingOtp(false);
-            setOneTimePass(result.otp);
-        })
-        .catch(error => {
-            setIsSendingOtp(false);
-            Swal.fire({
-                title: error.message,
-                icon: 'error',
-                text: 'Failed to generate OTP',
-                timer: 3000,
-                timerProgressBar: false,
-                showConfirmButton: false
-            });
+            setOneTimePass(responseJson.otp);
         });
     };
 
@@ -197,37 +181,25 @@ export default function Auth({appTheme}) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                email: signupEmail,
-                mobileNumber: mobileNumber
+                email: signupEmail
             })
         })
-        .then(res => res.json())
-        .then(result => {
-            if (!result.success) {
-                setIsModalVisible(true);
-            }
-            else {
+        .then(async (res) => {
+            if (!res.ok) {
+                const errorResponse = await res.json();
+                const errorMessage = errorResponse.message;
+                
                 Swal.fire({
-                    title: 'Account Exist!',
+                    title: errorMessage,
                     icon: 'error',
-                    text: result.message,
+                    text: 'Please use a different email',
                     showConfirmButton: false,
                     timer: 3000,
                     timerProgressBar: false
                 });
-                setSignupPass("");
-                setSignupConfirmPass("");
+            } else {
+                setIsModalVisible(true);
             }
-        })
-        .catch(error => {
-            Swal.fire({
-                title: error.message,
-                icon: 'error',
-                text: 'Could not verify if account exist',
-                timer: 3000,
-                timerProgressBar: false,
-                showConfirmButton: false
-            });
         });
     };
 
@@ -251,17 +223,15 @@ export default function Auth({appTheme}) {
                 middleName: middleName,
                 lastName: lastName,
                 email: signupEmail,
-                mobileNumber: mobileNumber,
+                phoneNumber: mobileNumber,
                 password: signupPass
             })
         })
-        .then(res => res.json())
-        .then(result => {
-            loadingSwal.close();
-
-            if (result.success === false) {
+        .then(res => {
+            if (!res.ok) {
+                console.log(res);
                 Swal.fire({
-                    title: result.message,
+                    title: res.message,
                     icon: 'error',
                     text: 'Please try again.',
                     showConfirmButton: false,
@@ -269,24 +239,28 @@ export default function Auth({appTheme}) {
                     timerProgressBar: false
                 });
             }
-            else {
-                setIsModalVisible(false);
-                Swal.fire({
-                    title: result.message,
-                    icon: 'success',
-                    showConfirmButton: false,
-                    timer: 2000,
-                    timerProgressBar: false
-                });
-                setFirstName("");
-                setMiddleName("");
-                setLastName("");
-                setSignupEmail("");
-                setMobileNumber("");
-                setSignupPass("");
-                setSignupConfirmPass("");
-                setOneTimePass("");
-            }
+
+            return res.json();
+        })
+        .then(result => {
+            loadingSwal.close();
+
+            setIsModalVisible(false);
+            Swal.fire({
+                title: result.message,
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: false
+            });
+            setFirstName("");
+            setMiddleName("");
+            setLastName("");
+            setSignupEmail("");
+            setMobileNumber("");
+            setSignupPass("");
+            setSignupConfirmPass("");
+            setOneTimePass("");
         })
         .catch(error => {
             loadingSwal.close();
