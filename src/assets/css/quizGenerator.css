@@ -3,20 +3,43 @@
 }
 
 .checkbox-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    column-gap: 1.25rem;
-    justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.checkbox-list .form-check {
+    flex: 1 1 100%;
 }
 
 @media (min-width: 768px) {
-    .checkbox-list {
-        grid-template-columns:  1fr 1fr;
+    .checkbox-list .form-check {
+        flex: 1 1 50%;
     }
 }
 
 @media (min-width: 992px) {
-    .checkbox-list {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+    .checkbox-list .form-check {
+        flex: 1 1 25%;
+    }
+}
+
+.card-footer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card-footer * {
+    flex: 1 1 100%;
+}
+
+@media (min-width: 768px) {
+    .card-footer * {
+        flex: 1 1 50%;
+    }
+}
+
+@media (min-width: 992px) {
+    .card-footer * {
+        flex: 1 1 25%;
     }
 }
