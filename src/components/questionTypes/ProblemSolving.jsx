@@ -3,12 +3,14 @@ import { Button, Card, Stack } from "react-bootstrap";
 import { Player } from "@lordicon/react";
 import "../../assets/css/quizGenerator.css";
 import "../../assets/css/testTypes.css";
+import UseParseMathEq from '../../hooks/useParseMathEq';
 const IconTrash = require("../../assets/images/wired-flat-185-trash-bin.json");
 const IconEdit = require("../../assets/images/wired-flat-35-edit.json");
 
-export default function ProblemSolving({appTheme}) {
+export default function ProblemSolving({appTheme, questionData}) {
     const deleteRef = useRef(null);
     const editRef = useRef(null);
+    const {question} = questionData;
 
     const playDelete = () => {
         deleteRef.current?.playFromBeginning();
@@ -19,7 +21,7 @@ export default function ProblemSolving({appTheme}) {
     };
     
     return (
-        <Card id="testType-enumeration" bg={appTheme} text={appTheme === 'light' ? 'dark' : 'white'} className="card-test">
+        <Card id="testType-problemsolving" bg={appTheme} text={appTheme === 'light' ? 'dark' : 'white'} className="card-test">
             <Card.Header className="d-flex align-items-center justify-content-between">
                 <Card.Title className="title-1 fw-bold m-0">Problem Solving</Card.Title>
                 
@@ -36,7 +38,7 @@ export default function ProblemSolving({appTheme}) {
 
             <Card.Body>
                 <p className="text-instruction">
-                    Nunc semper facilisis erat vel pulvinar. Integer cursus turpis et feugiat condimentum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In eros massa, imperdiet nec consequat a, blandit ut urna. Curabitur quis rhoncus purus, eu elementum leo.
+                    {UseParseMathEq(question)}
                 </p>
             </Card.Body>
         </Card>

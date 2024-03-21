@@ -1,14 +1,21 @@
 import { Fragment, useEffect, useState } from "react";
+import { Button, Card, Container, Dropdown, Form, InputGroup, Stack } from "react-bootstrap";
+import Swal from "sweetalert2";
+import ProblemSolving from './questionTypes/ProblemSolving';
 import "../assets/css/quizGenerator.css";
 import "../assets/css/testGenerator.css";
-import { Button, Card, Container, Dropdown, Form, InputGroup, Stack } from "react-bootstrap";
 
 export default function TestGenerator({appTheme}) {
     const [selectedTestType, setSelectedTestType] = useState("");
     const [selectedSubject, setSelectedSubject] = useState("");
     const [selectedChapter, setSelectedChapter] = useState('');
+    const [selectedTopics, setSelectedTopics] = useState([]);
     const [availableSubjects, setAvailableSubjects] = useState([]);
     const [availableTopics, setAvailableTopics] = useState([]);
+    const [numberOfItems, setNumberOfItems] = useState(0);
+    const [pointsPerItem, setPointsPerItem] = useState(0);
+    const [generateButton, setGenerateButton] = useState(true);
+    const [questionList, setQuestionList] = useState([]);
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}/question/getSubjects`, {
@@ -56,7 +63,6 @@ export default function TestGenerator({appTheme}) {
             })
             .then(async (res) => {
                 const responseJson = await res.json();
-                console.log(responseJson);
     
                 if (responseJson.length === 0) {
                     setAvailableTopics([]);
@@ -64,13 +70,74 @@ export default function TestGenerator({appTheme}) {
                 else {
                     setAvailableTopics(responseJson.map((topic, index) => {
                         return (
-                            <Form.Check key={index} type="checkbox" label={topic} name={topic} />
+                            <Form.Check key={index} type="checkbox" label={topic} name="topic" value={topic} onChange={() => updateSelectedTopics()} />
                         );
                     }));
                 }
             });
         }
     }, [selectedSubject, selectedChapter]);
+
+    useEffect(() => {
+        if (!selectedTestType || !selectedSubject || !selectedChapter || selectedTopics.length === 0 || numberOfItems === 0 || pointsPerItem === 0) {
+            setGenerateButton(true);
+        }
+        else {
+            setGenerateButton(false);
+        }
+    }, [selectedTestType, selectedSubject, selectedChapter, selectedTopics, numberOfItems, pointsPerItem]);
+
+    const updateSelectedTopics = () => {
+        let topicList = [];
+
+        const checkboxes = document.querySelectorAll('input[name="topic"]:checked');
+
+        checkboxes.forEach((checkbox) => {
+            topicList.push(checkbox.getAttribute('value'));
+        });
+
+        setSelectedTopics(topicList);
+    };
+
+    const GenerateQuestions = () => {
+        fetch(`${process.env.REACT_APP_API_URL}/quizSet/create`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${sessionStorage.getItem('token')}`
+            },
+            body: JSON.stringify({
+                subject: selectedSubject,
+                subTopics: selectedTopics,
+                items: numberOfItems
+            })
+        })
+        .then(async (res) => {
+            if (!res.ok) {
+                const responseJson = await res.json();
+                const responseError = responseJson.message;
+
+                Swal.fire({
+                    title: responseError,
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    timerProgressBar: false
+                });
+            }
+            else {
+                const responseJson = await res.json();
+
+                if (selectedTestType === 'Problem Solving') {
+                    setQuestionList(responseJson.map(question => {
+                        return (
+                            <ProblemSolving key={question._id} questionData={question} appTheme={appTheme} />
+                        );
+                    }));
+                }
+            }
+        });
+    };
 
     return (
         <Fragment>
@@ -132,19 +199,20 @@ export default function TestGenerator({appTheme}) {
                 <Card.Footer className="gap-3">
                     <InputGroup>
                         <InputGroup.Text>Number of item(s)</InputGroup.Text>
-                        <Form.Control type="number" />
+                        <Form.Control type="number" value={numberOfItems} onChange={e => setNumberOfItems(e.target.value)} />
                     </InputGroup>
 
                     <InputGroup>
                         <InputGroup.Text>Point(s)-per-item</InputGroup.Text>
-                        <Form.Control type="number" />
+                        <Form.Control type="number" value={pointsPerItem} onChange={e => setPointsPerItem(e.target.value)} />
                     </InputGroup>
 
-                    <Button variant="primary" className="btn-generateQestions">Generate Question(s)</Button>
+                    <Button variant="primary" className="btn-generateQestions" onClick={() => GenerateQuestions()} disabled={generateButton}>Generate Question(s)</Button>
                 </Card.Footer>
             </Card>
             
             <Stack direction="vertical" gap={3} className="my-3">
+                {questionList}
             </Stack>
         </Fragment>
     );
