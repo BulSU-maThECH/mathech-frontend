@@ -101,10 +101,7 @@ export default function DashboardSidebar({appTheme}) {
                     </Button>
 
                     <Stack direction="vertical" gap={2} className="quiz-list p-2">
-                        <AnimatedButton buttonKey={1} />
-                        <AnimatedButton buttonKey={2} />
-                        <AnimatedButton buttonKey={3} />
-                        <AnimatedButton buttonKey={4} />
+                        {/* <AnimatedButton buttonKey={1} /> */}
                     </Stack>
                     
                     <div className="account-container position-relative">
