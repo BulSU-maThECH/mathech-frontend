@@ -1,14 +1,34 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button, Card, InputGroup, Stack } from "react-bootstrap";
 import { Player } from "@lordicon/react";
 import "../../assets/css/quizGenerator.css";
 import "../../assets/css/testTypes.css";
+import UseParseMathEq from '../../hooks/useParseMathEq';
 const IconTrash = require("../../assets/images/wired-flat-185-trash-bin.json");
 const IconEdit = require("../../assets/images/wired-flat-35-edit.json");
 
-export default function MultipleChoice({appTheme}) {
+export default function MultipleChoice({questionData, index}) {
+    const [appTheme, setAppTheme] = useState(document.body.getAttribute('data-mt-theme'));
     const deleteRef = useRef(null);
     const editRef = useRef(null);
+    const {question} = questionData;
+    
+    useEffect(() => {
+        const bodyObserver = new MutationObserver(mutationList => {
+            for (let mutation of mutationList) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'data-mt-theme') {
+                    const newTheme = mutation.target.getAttribute('data-mt-theme');
+                    setAppTheme(newTheme);
+                }
+            }
+        });
+
+        bodyObserver.observe(document.body, { attributes: true });
+
+        return () => {
+            bodyObserver.disconnect();
+        }
+    });
 
     const playDelete = () => {
         deleteRef.current?.playFromBeginning();
@@ -21,7 +41,7 @@ export default function MultipleChoice({appTheme}) {
     return (
         <Card id="testType-enumeration" bg={appTheme} text={appTheme === 'light' ? 'dark' : 'white'} className="card-test">
             <Card.Header className="d-flex align-items-center justify-content-between">
-                <Card.Title className="title-1 fw-bold m-0">Multiple Choice</Card.Title>
+                <Card.Title className="title-1 fw-bold m-0">Question #{index + 1}</Card.Title>
                 
                 <Stack direction="horizontal" gap={2}>
                     <Button variant="danger" onMouseEnter={playDelete}>
@@ -36,7 +56,7 @@ export default function MultipleChoice({appTheme}) {
 
             <Card.Body>
                 <p className="text-instruction">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisquam curabitur inceptos etiam blandit consectetur, vestibulum rhoncus velit malesuada? Sed dapibus ultricies orci, nec aliquam eros venenatis eget. Quisque ullamcorper, quam ut tincidunt tincidunt, felis metus pellentesque felis, nec scelerisque orci urna id ligula?
+                    {UseParseMathEq(question)}
                 </p>
 
                 <Stack direction="vertical" gap={2} className="w-50">

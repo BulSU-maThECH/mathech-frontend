@@ -71,6 +71,7 @@ export default function TestGenerator({appTheme}) {
     
                 if (responseJson.length === 0) {
                     setAvailableTopics([]);
+                    setSelectedTopics([]);
                 }
                 else {
                     setAvailableTopics(responseJson.map((topic, index) => {
@@ -100,6 +101,7 @@ export default function TestGenerator({appTheme}) {
         checkboxes.forEach((checkbox) => {
             topicList.push(checkbox.getAttribute('value'));
         });
+        console.log(topicList);
 
         setSelectedTopics(topicList);
     };
@@ -134,44 +136,44 @@ export default function TestGenerator({appTheme}) {
                 const responseJson = await res.json();
 
                 if (selectedTestType === 'Enumeration') {
-                    setQuestionList(responseJson.map(question => {
+                    setQuestionList(responseJson.map((question, index) => {
                         return (
-                            <Enumeration key={question._id} questionData={question} appTheme={appTheme} />
+                            <Enumeration key={question._id} index={index} questionData={question} appTheme={appTheme} />
                         );
                     }));
                 }
                 else if (selectedTestType === 'Essay') {
-                    setQuestionList(responseJson.map(question => {
+                    setQuestionList(responseJson.map((question, index) => {
                         return (
-                            <Essay key={question._id} questionData={question} appTheme={appTheme} />
+                            <Essay key={question._id} index={index} questionData={question} appTheme={appTheme} />
                         );
                     }));
                 }
                 else if (selectedTestType === 'Multiple Answer') {
-                    setQuestionList(responseJson.map(question => {
+                    setQuestionList(responseJson.map((question, index) => {
                         return (
-                            <MultipleAnswer key={question._id} questionData={question} appTheme={appTheme} />
+                            <MultipleAnswer key={question._id} index={index} questionData={question} appTheme={appTheme} />
                         );
                     }));
                 }
                 else if (selectedTestType === 'Multiple Choice') {
-                    setQuestionList(responseJson.map(question => {
+                    setQuestionList(responseJson.map((question, index) => {
                         return (
-                            <MultipleChoice key={question._id} questionData={question} appTheme={appTheme} />
+                            <MultipleChoice key={question._id} index={index} questionData={question} appTheme={appTheme} />
                         );
                     }));
                 }
                 else if (selectedTestType === 'Problem Solving') {
-                    setQuestionList(responseJson.map(question => {
+                    setQuestionList(responseJson.map((question, index) => {
                         return (
-                            <ProblemSolving key={question._id} questionData={question} appTheme={appTheme} />
+                            <ProblemSolving key={question._id} index={index} questionData={question} appTheme={appTheme} />
                         );
                     }));
                 }
                 else if (selectedTestType === 'Short Answer') {
-                    setQuestionList(responseJson.map(question => {
+                    setQuestionList(responseJson.map((question, index) => {
                         return (
-                            <ShortAnswer key={question._id} questionData={question} appTheme={appTheme} />
+                            <ShortAnswer key={question._id} index={index} questionData={question} appTheme={appTheme} />
                         );
                     }));
                 }
