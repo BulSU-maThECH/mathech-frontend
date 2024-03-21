@@ -15,8 +15,6 @@ const UseParseMathEq = (equation) => {
         }
     });
 
-    console.log(`prased: ${parsedEquation}`);
-
     return parsedEquation;
 };
 
