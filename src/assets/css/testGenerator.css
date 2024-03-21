@@ -27,3 +27,7 @@
     justify-content: space-between;
     gap: 0.375rem;
 }
+
+.katex-html[aria-hidden="true"] {
+    display: none;
+}

@@ -12,6 +12,7 @@ const IconDoc = require("../assets/images/wired-flat-245-edit-document.json");
 const IconAccount = require("../assets/images/wired-flat-21-avatar.json");
 const IconResize = require("../assets/images/system-solid-15-ratio.json");
 
+// eslint-disable-next-line no-unused-vars
 const AnimatedButton = ({buttonKey}) => {
     const [isHovered, setIsHovered] = useState(false);
     const playRef = useRef(null);

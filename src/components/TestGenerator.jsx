@@ -2,6 +2,11 @@ import { Fragment, useEffect, useState } from "react";
 import { Button, Card, Container, Dropdown, Form, InputGroup, Stack } from "react-bootstrap";
 import Swal from "sweetalert2";
 import ProblemSolving from './questionTypes/ProblemSolving';
+import Enumeration from './questionTypes/Enumeration';
+import Essay from './questionTypes/Essay';
+import MultipleChoice from './questionTypes/MultipleChoice';
+import MultipleAnswer from './questionTypes/MultipleAnswer';
+import ShortAnswer from './questionTypes/ShortAnswer';
 import "../assets/css/quizGenerator.css";
 import "../assets/css/testGenerator.css";
 
@@ -128,10 +133,45 @@ export default function TestGenerator({appTheme}) {
             else {
                 const responseJson = await res.json();
 
-                if (selectedTestType === 'Problem Solving') {
+                if (selectedTestType === 'Enumeration') {
+                    setQuestionList(responseJson.map(question => {
+                        return (
+                            <Enumeration key={question._id} questionData={question} appTheme={appTheme} />
+                        );
+                    }));
+                }
+                else if (selectedTestType === 'Essay') {
+                    setQuestionList(responseJson.map(question => {
+                        return (
+                            <Essay key={question._id} questionData={question} appTheme={appTheme} />
+                        );
+                    }));
+                }
+                else if (selectedTestType === 'Multiple Answer') {
+                    setQuestionList(responseJson.map(question => {
+                        return (
+                            <MultipleAnswer key={question._id} questionData={question} appTheme={appTheme} />
+                        );
+                    }));
+                }
+                else if (selectedTestType === 'Multiple Choice') {
+                    setQuestionList(responseJson.map(question => {
+                        return (
+                            <MultipleChoice key={question._id} questionData={question} appTheme={appTheme} />
+                        );
+                    }));
+                }
+                else if (selectedTestType === 'Problem Solving') {
                     setQuestionList(responseJson.map(question => {
                         return (
                             <ProblemSolving key={question._id} questionData={question} appTheme={appTheme} />
+                        );
+                    }));
+                }
+                else if (selectedTestType === 'Short Answer') {
+                    setQuestionList(responseJson.map(question => {
+                        return (
+                            <ShortAnswer key={question._id} questionData={question} appTheme={appTheme} />
                         );
                     }));
                 }
@@ -154,8 +194,8 @@ export default function TestGenerator({appTheme}) {
                             <Dropdown.Item onClick={() => setSelectedTestType("Essay")}>Essay</Dropdown.Item>
                             <Dropdown.Item onClick={() => setSelectedTestType("Multiple Answer")}>Multiple Answer</Dropdown.Item>
                             <Dropdown.Item onClick={() => setSelectedTestType("Multiple Choice")}>Multiple Choice</Dropdown.Item>
-                            <Dropdown.Item onClick={() => setSelectedTestType("Short Answer")}>Short Answer</Dropdown.Item>
                             <Dropdown.Item onClick={() => setSelectedTestType("Problem Solving")}>Problem Solving</Dropdown.Item>
+                            <Dropdown.Item onClick={() => setSelectedTestType("Short Answer")}>Short Answer</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                 </Card.Header>
